@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #ffe6eb;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    h1 {
+      color: #d6336c;
+      margin-bottom: 50px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      position: absolute;
+    }
+
+    #yes {
+      background-color: #ff4d6d;
+      color: white;
+      left: 40%;
+    }
+
+    #no {
+      background-color: #adb5bd;
+      color: white;
+      left: 60%;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Michelle, willst du mein Valentine sein? 💖</h1>
+
+  <button id="yes">Ja</button>
+  <button id="no">Nein</button>
+
+  <script>
+    const yesButton = document.getElementById('yes');
+    const noButton = document.getElementById('no');
+
+    // Ja-Button klick
+    yesButton.addEventListener('click', () => {
+      alert("💘 Richtige Antwort! 💘");
+    });
+
+    // Nein-Button läuft weg
+    document.addEventListener('mousemove', (e) => {
+      const buffer = 50; // Mindestabstand Cursor ↔ Button
+      const rect = noButton.getBoundingClientRect();
+      const cursorX = e.clientX;
+      const cursorY = e.clientY;
+
+      if (cursorX > rect.left - buffer && cursorX < rect.right + buffer &&
+          cursorY > rect.top - buffer && cursorY < rect.bottom + buffer) {
+
+        const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+
+        noButton.style.left = x + 'px';
+        noButton.style.top = y + 'px';
+      }
+    });
+  </script>
+
+</body>
+</html>
+
